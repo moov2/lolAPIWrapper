@@ -212,7 +212,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 -- featured-games-v1.0   
 -- lol-status-v1.0   
   
-- Adding unit test  
+- Adding test unit
 
 ## License
 
