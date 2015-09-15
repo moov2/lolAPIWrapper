@@ -20,7 +20,7 @@ Developed in swift to make it easy for iOS developers develop application using 
 s.homepage         = "https://github.com/moov2/lolAPIWrapper"
 s.license          = 'MIT'
 s.author           = { "Moov2" => "mobin@moov2.com" }
-s.source           = { :git => "https://github.com/moov2/lolAPIWrapper.git", :tag => s.version.to_s }
+s.source           = { :git => "https://github.com/moov2/lolAPIWrapper.git", :tag => "v#{s.version}" }
 
 s.platform     = :ios, '8.0'
 s.requires_arc = true
