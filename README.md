@@ -1,12 +1,11 @@
 # lolAPIWrapper
 
 lolAPIWrapper is a light-weight wrapper around League of Legends (LOL) API.
-Developed in swift to make it easy for iOS developers develop application using LOL API.
+Developed in swift to make it easy for iOS developers to develop applications using LOL API.
 
 ## Installation
 
-lolAPIWrapper is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+lolAPIWrapper is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```swift
 pod "lolAPIWrapper"
@@ -19,7 +18,7 @@ Import the wrapper at the top of the page
 import lolAPIWrapper
 ```
 
-Getting recent games of required user
+The following snippets will retrieve recent games of the required user
 ```swift
 // Initialise lolWrapper with api key
 // For API Key register at https://developer.riotgames.com/
@@ -208,12 +207,12 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## TODO
 
-- Adding following API calls:
--- current-game-v1.0
--- featured-games-v1.0
--- lol-status-v1.0
-
-- Adding unit test
+- Adding following API calls:  
+-- current-game-v1.0   
+-- featured-games-v1.0   
+-- lol-status-v1.0   
+  
+- Adding unit test  
 
 ## License
 
