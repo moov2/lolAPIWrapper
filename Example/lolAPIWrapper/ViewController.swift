@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import lolAPIWrapper
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Initialise lolWrapper with api key
+        // For API Key register at https://developer.riotgames.com/
+        var lolApi = lolApiWrapper().ApiKey("REQUIRED_API_KEY");
+        
+            lolApi.champion()
+                   .get()
+
     }
 
     override func didReceiveMemoryWarning() {

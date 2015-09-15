@@ -1,0 +1,21 @@
+{
+  "name": "lolAPIWrapper",
+  "version": "0.1.0",
+  "summary": "A swift wrapper around League of Legends (LOL) API.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/lolAPIWrapper",
+  "license": "MIT",
+  "authors": {
+    "Moov2": "mobin@moov2.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/lolAPIWrapper.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "frameworks": "UIKit"
+}

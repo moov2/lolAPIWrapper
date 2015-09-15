@@ -1,40 +1,30 @@
 #
-# Be sure to run `pod lib lint lolAPIWrapper.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# Created at Moov2
 #
 
 Pod::Spec.new do |s|
-  s.name             = "lolAPIWrapper"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of lolAPIWrapper."
+s.name             = "lolAPIWrapper"
+s.version          = "1.0.0"
+s.summary          = "A swift wrapper around League of Legends (LOL) API."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
+#   * Finally, don't worry about the indent, CocoaPods strips it!
+s.description      = %{
+lolAPIWrapper is a light-weight wrapper around League of Legends (LOL) API.
+Developed in swift to make it easy for iOS developers develop application using LOL API.
+}
 
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/lolAPIWrapper"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "Mobin Zadeh Kochak" => "mobin@moov2.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/lolAPIWrapper.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+s.homepage         = "https://github.com/moov2/lolAPIWrapper"
+s.license          = 'MIT'
+s.author           = { "Moov2" => "mobin@moov2.com" }
+s.source           = { :git => "https://github.com/moov2/lolAPIWrapper.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
+s.platform     = :ios, '8.0'
+s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'lolAPIWrapper' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+s.source_files = 'Pod/Classes/**/*'
+s.frameworks = 'UIKit'
 end
