@@ -65,6 +65,7 @@ public class lolApiWrapper: NSObject {
         
         let jsonData = NSData()
         var jsonDictionary = NSDictionary()
+        var urlToRequest = urlToRequest.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
         if let jsonData = NSData(contentsOfURL: NSURL(string: urlToRequest)!) {
             // Parse data
