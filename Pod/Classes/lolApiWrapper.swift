@@ -9,7 +9,7 @@
 import UIKit
 
 let APIURL = "https://{region}.api.pvp.net/api/lol/{region}"
-let regions = ["na", "br", "eune", "euw", "kr", "lan", "las", "oce", "ru", "tr"]
+let regions = ["euw", "na", "br", "eune", "kr", "lan", "las", "oce", "ru", "tr"]
 let summonerAPIVersion        = "1.4"
 let teamAPIVersion            = "2.4"
 let statsAPIVersion           = "1.3"
@@ -40,7 +40,7 @@ public class lolApiWrapper: NSObject {
     public func get() -> NSDictionary {
         
         if(self.region == "") {
-            for i in 0...regions.count {
+            for i in 0...(regions.count-1) {
                 var apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
                 var URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
                 
