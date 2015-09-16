@@ -8,7 +8,8 @@
 
 import UIKit
 
-let APIURL = "https://na.api.pvp.net/api/lol/"
+let APIURL = "https://{region}.api.pvp.net/api/lol/{region}"
+let regions = ["na", "br", "eune", "euw", "kr", "lan", "las", "oce", "ru", "tr"]
 let summonerAPIVersion        = "1.4"
 let teamAPIVersion            = "2.4"
 let statsAPIVersion           = "1.3"
@@ -27,7 +28,7 @@ public class lolApiWrapper: NSObject {
     var miniURL = ""
     var result = NSDictionary();
     
-    public func ApiKey(APIKey: String, region: String = "na") -> lolApiWrapper {
+    public func ApiKey(APIKey: String, region: String = "") -> lolApiWrapper {
         self.APIKey = APIKey
         self.region = region
         
@@ -37,9 +38,23 @@ public class lolApiWrapper: NSObject {
     
     // MARK: Retrieve API
     public func get() -> NSDictionary {
-        var URL = APIURL + self.region + self.miniURL + "?api_key=" + self.APIKey
         
-        self.result = self.getJSON(URL)
+        if(self.region == "") {
+            for i in 0...regions.count {
+                var apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
+                var URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+                
+                self.result = self.getJSON(URL)
+                
+                if (self.result.count > 0) {
+                    break;
+                }
+            }
+        } else {
+            var apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
+            var URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+        }
+        
         
         print(self.result)
         
@@ -67,8 +82,8 @@ public class lolApiWrapper: NSObject {
     // MARK: API - champion
     /**
     
-        /champion   -> Retrieve all champions.
-        /{id}       -> Retrieve champion by ID.
+    /champion   -> Retrieve all champions.
+    /{id}       -> Retrieve champion by ID.
     
     */
     public func champion(url: String = "") -> lolApiWrapper {
@@ -80,7 +95,7 @@ public class lolApiWrapper: NSObject {
     // MARK: API - game
     /**
     
-        /by-summoner/{summonerId}/recent  -> Get recent games by summoner ID.
+    /by-summoner/{summonerId}/recent  -> Get recent games by summoner ID.
     
     */
     public func game(url: String) -> lolApiWrapper {
@@ -92,12 +107,12 @@ public class lolApiWrapper: NSObject {
     // MARK: API - league
     /**
     
-        /by-summoner/{summonerIds}       -> Get leagues mapped by summoner ID for a given list of summoner IDs.
-        /by-summoner/{summonerIds}/entry -> Get league entries mapped by summoner ID for a given list of summoner IDs.
-        /by-team/{teamIds}               -> Get leagues mapped by team ID for a given list of team IDs.
-        /by-team/{teamIds}/entry         -> Get league entries mapped by team ID for a given list of team IDs.
-        /challenger                      -> Get challenger tier leagues.
-        /master                          -> Get master tier leagues.
+    /by-summoner/{summonerIds}       -> Get leagues mapped by summoner ID for a given list of summoner IDs.
+    /by-summoner/{summonerIds}/entry -> Get league entries mapped by summoner ID for a given list of summoner IDs.
+    /by-team/{teamIds}               -> Get leagues mapped by team ID for a given list of team IDs.
+    /by-team/{teamIds}/entry         -> Get league entries mapped by team ID for a given list of team IDs.
+    /challenger                      -> Get challenger tier leagues.
+    /master                          -> Get master tier leagues.
     
     */
     public func league(url: String) -> lolApiWrapper {
@@ -109,21 +124,21 @@ public class lolApiWrapper: NSObject {
     // MARK: API - lol-static-data
     /**
     
-        /champion            -> Retrieves champion list.
-        /champion/{id}       -> Retrieves a champion by its id.
-        /item                -> Retrieves item list.
-        /item/{id}           -> Retrieves item by its unique id.
-        /language-strings    -> Retrieve language strings data.
-        /languages           -> Retrieve supported languages data.
-        /map                 -> Retrieve map data.
-        /mastery             -> Retrieves mastery list.
-        /mastery/{id}        -> Retrieves mastery item by its unique id.
-        /realm               -> Retrieve realm data.
-        /rune                -> Retrieves rune list.
-        /rune/{id}           -> Retrieves rune by its unique id.
-        /summoner-spell      -> Retrieves summoner spell list.
-        /summoner-spell/{id} -> Retrieves summoner spell by its unique id.
-        /versions            -> Retrieve version data.
+    /champion            -> Retrieves champion list.
+    /champion/{id}       -> Retrieves a champion by its id.
+    /item                -> Retrieves item list.
+    /item/{id}           -> Retrieves item by its unique id.
+    /language-strings    -> Retrieve language strings data.
+    /languages           -> Retrieve supported languages data.
+    /map                 -> Retrieve map data.
+    /mastery             -> Retrieves mastery list.
+    /mastery/{id}        -> Retrieves mastery item by its unique id.
+    /realm               -> Retrieve realm data.
+    /rune                -> Retrieves rune list.
+    /rune/{id}           -> Retrieves rune by its unique id.
+    /summoner-spell      -> Retrieves summoner spell list.
+    /summoner-spell/{id} -> Retrieves summoner spell by its unique id.
+    /versions            -> Retrieve version data.
     
     */
     public func lol_static_data(url: String) -> lolApiWrapper {
@@ -135,7 +150,7 @@ public class lolApiWrapper: NSObject {
     // MARK: API - Match
     /**
     
-        /{matchId}  -> Retrieve match by match ID.
+    /{matchId}  -> Retrieve match by match ID.
     
     */
     public func match(url: String) -> lolApiWrapper {
@@ -147,7 +162,7 @@ public class lolApiWrapper: NSObject {
     // MARK: API - Matchlist
     /**
     
-        /by-summoner/{summonerId}         -> Retrieve match list by summoner ID.
+    /by-summoner/{summonerId}         -> Retrieve match list by summoner ID.
     
     */
     public func matchlist(url: String) -> lolApiWrapper {
@@ -159,8 +174,8 @@ public class lolApiWrapper: NSObject {
     // MARK: API - Stats
     /**
     
-        /by-summoner/{summonerId}/ranked  -> Get ranked stats by summoner ID.
-        /by-summoner/{summonerId}/summary -> Get player stats summaries by summoner ID.
+    /by-summoner/{summonerId}/ranked  -> Get ranked stats by summoner ID.
+    /by-summoner/{summonerId}/summary -> Get player stats summaries by summoner ID.
     
     */
     public func stats(url: String) -> lolApiWrapper {
@@ -172,11 +187,11 @@ public class lolApiWrapper: NSObject {
     // MARK: API - Summoner
     /**
     
-        /by-name/{summonerNames} -> Get summoner objects mapped by standardized summoner name for a given list of summoner names.
-        /{summonerIds}           -> Get summoner objects mapped by summoner ID for a given list of summoner IDs.
-        /{summonerIds}/masteries -> Get mastery pages mapped by summoner ID for a given list of summoner IDs.
-        /{summonerIds}/name      -> Get summoner names mapped by summoner ID for a given list of summoner IDs.
-        /{summonerIds}/runes     -> Get rune pages mapped by summoner ID for a given list of summoner IDs.
+    /by-name/{summonerNames} -> Get summoner objects mapped by standardized summoner name for a given list of summoner names.
+    /{summonerIds}           -> Get summoner objects mapped by summoner ID for a given list of summoner IDs.
+    /{summonerIds}/masteries -> Get mastery pages mapped by summoner ID for a given list of summoner IDs.
+    /{summonerIds}/name      -> Get summoner names mapped by summoner ID for a given list of summoner IDs.
+    /{summonerIds}/runes     -> Get rune pages mapped by summoner ID for a given list of summoner IDs.
     
     */
     public func summoner(url: String) -> lolApiWrapper {
@@ -188,19 +203,19 @@ public class lolApiWrapper: NSObject {
     // MARK: API - Team
     /**
     
-        /by-summoner/{summonerIds}   -> Get teams mapped by summoner ID for a given list of summoner IDs.
-        /{teamIds}                   -> Get teams mapped by team ID for a given list of team IDs.
+    /by-summoner/{summonerIds}   -> Get teams mapped by summoner ID for a given list of summoner IDs.
+    /{teamIds}                   -> Get teams mapped by team ID for a given list of team IDs.
     
     */
     public func team(url: String) -> lolApiWrapper {
         self.miniURL = "/v" + teamAPIVersion + "/team/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
-
-
-
-
-
+    
+    
+    
+    
+    
     
     
     // MARK: TO DO
