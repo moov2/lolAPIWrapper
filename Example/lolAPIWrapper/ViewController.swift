@@ -16,7 +16,7 @@ class ViewController: UIViewController {
 
         // Initialise lolWrapper with api key
         // For API Key register at https://developer.riotgames.com/
-        var lolApi = lolApiWrapper().ApiKey("REQUIRED_API_KEY");
+        let lolApi = lolApiWrapper().ApiKey("REQUIRED_API_KEY");
         
             lolApi.champion()
                    .get()

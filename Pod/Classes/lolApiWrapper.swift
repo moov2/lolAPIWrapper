@@ -41,8 +41,8 @@ public class lolApiWrapper: NSObject {
         
         if(self.region == "") {
             for i in 0...(regions.count-1) {
-                var apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
-                var URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+                let apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
+                let URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
                 
                 self.result = self.getJSON(URL)
                 
@@ -51,8 +51,9 @@ public class lolApiWrapper: NSObject {
                 }
             }
         } else {
-            var apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
-            var URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+            let apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
+            let URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+            self.result = self.getJSON(URL)
         }
         
         
@@ -63,14 +64,17 @@ public class lolApiWrapper: NSObject {
     
     public func getJSON(urlToRequest: String) -> NSDictionary{
         
-        let jsonData = NSData()
         var jsonDictionary = NSDictionary()
-        var urlToRequest = urlToRequest.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let urlToRequest = urlToRequest.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
         
         if let jsonData = NSData(contentsOfURL: NSURL(string: urlToRequest)!) {
             // Parse data
-            var error: NSError?
-            jsonDictionary = NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers, error: &error) as! NSDictionary
+
+            do {
+            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            } catch let error as NSError {
+                print(error)
+            }
         } else {
             print("-------- URL IS INVALID --------\n")
         }

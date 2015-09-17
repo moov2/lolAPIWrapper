@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "30E009B324F794BB52976DCD"
+               BlueprintIdentifier = "FE7C9C8F780A270C6111F789"
                BuildableName = "lolAPIWrapper.framework"
                BlueprintName = "lolAPIWrapper"
                ReferencedContainer = "container:Pods.xcodeproj">

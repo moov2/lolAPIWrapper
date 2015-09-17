@@ -1,5 +1,5 @@
 PODS:
-  - lolAPIWrapper (0.1.0)
+  - lolAPIWrapper (1.1.2)
 
 DEPENDENCIES:
   - lolAPIWrapper (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  lolAPIWrapper: 13555bda800ad21e3b343523b09aa71f182e6db5
+  lolAPIWrapper: 0f61a9a233621a6f092c02a6862d6cd8c41871bc
 
 COCOAPODS: 0.38.2

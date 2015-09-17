@@ -21,14 +21,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		75B17A2ABB05CB9740892939624529A9 /* PBXContainerItemProxy */ = {
+		045907719F0F9F91EC7E58E9934DEACA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 611E99554E59B1564EDFEB57B621B44A;
 			remoteInfo = lolAPIWrapper;
 		};
-		EB57B4041B76A2C2DE79EE349348A9FC /* PBXContainerItemProxy */ = {
+		1832AE80C586EA1AB38F3198FA4985A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -64,12 +64,12 @@
 		B5FD7029B62B5869855F559B9F87CEE2 /* Pods-lolAPIWrapper_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-lolAPIWrapper_Example-dummy.m"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BB8D70AA36E4C9A0DA31B3487D7A7A02 /* Pods-lolAPIWrapper_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-lolAPIWrapper_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		BE5266BE6530D2D2D0C1FB1F8D292615 /* lolAPIWrapper-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "lolAPIWrapper-Private.xcconfig"; sourceTree = "<group>"; };
 		DACE97F4A4D4CED2F34682B8681D9AA6 /* lolAPIWrapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = lolAPIWrapper.modulemap; sourceTree = "<group>"; };
 		DBD938CADFBB16860031ADAD73D4E25F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DF5429BE466AD1B102F74EDE3C0EEE3E /* Pods-lolAPIWrapper_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-lolAPIWrapper_Tests-dummy.m"; sourceTree = "<group>"; };
 		E419C4AF1F819F95C62D54ACEF12E998 /* Pods-lolAPIWrapper_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-lolAPIWrapper_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		E88EA0C93E6B65E3593CF0F092A7AAB8 /* Pods-lolAPIWrapper_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-lolAPIWrapper_Tests.modulemap"; sourceTree = "<group>"; };
+		E9E73D91833D980A1753FE6AAEC43F33 /* lolAPIWrapper-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "lolAPIWrapper-Private.xcconfig"; sourceTree = "<group>"; };
 		EFB93A489222C1AC7BAA78619F72EC2D /* Pods-lolAPIWrapper_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-lolAPIWrapper_Example.modulemap"; sourceTree = "<group>"; };
 		FD47868937FA0627D50539A2ADA46E9D /* lolAPIWrapper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = lolAPIWrapper.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,7 +191,7 @@
 				35EDAE42B4229EF1E5643237D36415EC /* Info.plist */,
 				DACE97F4A4D4CED2F34682B8681D9AA6 /* lolAPIWrapper.modulemap */,
 				FD47868937FA0627D50539A2ADA46E9D /* lolAPIWrapper.xcconfig */,
-				BE5266BE6530D2D2D0C1FB1F8D292615 /* lolAPIWrapper-Private.xcconfig */,
+				E9E73D91833D980A1753FE6AAEC43F33 /* lolAPIWrapper-Private.xcconfig */,
 				255429B224F5D3396A98BC42908014E5 /* lolAPIWrapper-dummy.m */,
 				7745DE4154ED6B9BB53753E9A72AA315 /* lolAPIWrapper-prefix.pch */,
 				7DC5A3BF52ED47FDCBAB2C7B47DA3ADE /* lolAPIWrapper-umbrella.h */,
@@ -293,7 +293,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				094A2B87298B8470B91EE916CAE4E07D /* PBXTargetDependency */,
+				02BD7978A00B1DDE18B0BB7E12F1FCA3 /* PBXTargetDependency */,
 			);
 			name = "Pods-lolAPIWrapper_Example";
 			productName = "Pods-lolAPIWrapper_Example";
@@ -311,7 +311,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				42D05D867973ABF9BE1E11908AD7CFED /* PBXTargetDependency */,
+				9C2E7B80A3BA47A6656F85682CD41A92 /* PBXTargetDependency */,
 			);
 			name = "Pods-lolAPIWrapper_Tests";
 			productName = "Pods-lolAPIWrapper_Tests";
@@ -375,49 +375,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		094A2B87298B8470B91EE916CAE4E07D /* PBXTargetDependency */ = {
+		02BD7978A00B1DDE18B0BB7E12F1FCA3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = lolAPIWrapper;
 			target = 611E99554E59B1564EDFEB57B621B44A /* lolAPIWrapper */;
-			targetProxy = 75B17A2ABB05CB9740892939624529A9 /* PBXContainerItemProxy */;
+			targetProxy = 045907719F0F9F91EC7E58E9934DEACA /* PBXContainerItemProxy */;
 		};
-		42D05D867973ABF9BE1E11908AD7CFED /* PBXTargetDependency */ = {
+		9C2E7B80A3BA47A6656F85682CD41A92 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = lolAPIWrapper;
 			target = 611E99554E59B1564EDFEB57B621B44A /* lolAPIWrapper */;
-			targetProxy = EB57B4041B76A2C2DE79EE349348A9FC /* PBXContainerItemProxy */;
+			targetProxy = 1832AE80C586EA1AB38F3198FA4985A9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0E31F31AA2C94A742F4946D6B06DA412 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE5266BE6530D2D2D0C1FB1F8D292615 /* lolAPIWrapper-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/lolAPIWrapper/lolAPIWrapper-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/lolAPIWrapper/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/lolAPIWrapper/lolAPIWrapper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = lolAPIWrapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -449,33 +421,6 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		127E260749C9BF763A5EBD083C00C20D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE5266BE6530D2D2D0C1FB1F8D292615 /* lolAPIWrapper-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/lolAPIWrapper/lolAPIWrapper-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/lolAPIWrapper/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/lolAPIWrapper/lolAPIWrapper.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = lolAPIWrapper;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -547,6 +492,34 @@
 			};
 			name = Debug;
 		};
+		79613E89FFDC011561462DE8BD55E048 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9E73D91833D980A1753FE6AAEC43F33 /* lolAPIWrapper-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.1.2;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/lolAPIWrapper/lolAPIWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/lolAPIWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/lolAPIWrapper/lolAPIWrapper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = lolAPIWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		8067EAC0C264E1CF6232933690E8F2FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BB8D70AA36E4C9A0DA31B3487D7A7A02 /* Pods-lolAPIWrapper_Tests.debug.xcconfig */;
@@ -576,6 +549,33 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		845844E1F850FACC8307B670AF88058C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9E73D91833D980A1753FE6AAEC43F33 /* lolAPIWrapper-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.1.2;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/lolAPIWrapper/lolAPIWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/lolAPIWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/lolAPIWrapper/lolAPIWrapper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = lolAPIWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		D546683D697A4F15529F453CB658223E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -642,8 +642,8 @@
 		2690A24CD03EE8887896E435FFE0AA5C /* Build configuration list for PBXNativeTarget "lolAPIWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0E31F31AA2C94A742F4946D6B06DA412 /* Debug */,
-				127E260749C9BF763A5EBD083C00C20D /* Release */,
+				79613E89FFDC011561462DE8BD55E048 /* Debug */,
+				845844E1F850FACC8307B670AF88058C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
