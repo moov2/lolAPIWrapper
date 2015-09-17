@@ -204,6 +204,31 @@ lolApi.summoner("/REQUIRED_TEAM_ID")
 ## Example
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Fix NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9802) error in iOS 9
+
+__The following code is required to be included into info.plist__   
+_To open info.plist file in plain text right click on the file then select  Open as > Source Code_  
+
+```swift  
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>api.pvp.net</key>
+            <dict>
+                <!--Include to allow subdomains-->
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!--Include to allow insecure HTTP requests-->
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <!--Include to specify minimum TLS version-->
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.2</string>
+            </dict>
+        </dict>
+    </dict>
+```
 
 ## TODO
 
