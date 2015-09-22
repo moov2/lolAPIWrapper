@@ -9,6 +9,7 @@
 import UIKit
 
 let APIURL = "https://{region}.api.pvp.net/api/lol/{region}"
+let STATICURL = "https://global.api.pvp.net/api/lol/static-data/{region}"
 let regions = ["euw", "na", "br", "eune", "kr", "lan", "las", "oce", "ru", "tr"]
 let summonerAPIVersion        = "1.4"
 let teamAPIVersion            = "2.4"
@@ -27,6 +28,7 @@ public class lolApiWrapper: NSObject {
     var region = ""
     var miniURL = ""
     var result = NSDictionary();
+    var static_data:Bool = false;
     
     public func ApiKey(APIKey: String, region: String = "") -> lolApiWrapper {
         self.APIKey = APIKey
@@ -38,11 +40,16 @@ public class lolApiWrapper: NSObject {
     
     // MARK: Retrieve API
     public func get() -> NSDictionary {
+        var apiURL = "";
         
         if(self.region == "") {
             for i in 0...(regions.count-1) {
-                let apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
-                let URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+                if(!static_data) {
+                    apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
+                } else {
+                    apiURL = STATICURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
+                }
+                let URL = apiURL + self.miniURL + (self.miniURL.containsString("?") ? "&" : "?") + "api_key=" + self.APIKey
                 
                 self.result = self.getJSON(URL)
                 
@@ -51,8 +58,12 @@ public class lolApiWrapper: NSObject {
                 }
             }
         } else {
-            let apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
-            let URL = apiURL + self.miniURL + "?api_key=" + self.APIKey
+            if(!static_data) {
+                apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
+            } else {
+                apiURL = STATICURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
+            }
+            let URL = apiURL + self.miniURL + (self.miniURL.containsString("?") ? "&" : "?") + "api_key=" + self.APIKey
             self.result = self.getJSON(URL)
         }
         
@@ -69,9 +80,9 @@ public class lolApiWrapper: NSObject {
         
         if let jsonData = NSData(contentsOfURL: NSURL(string: urlToRequest)!) {
             // Parse data
-
+            
             do {
-            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             } catch let error as NSError {
                 print(error)
             }
@@ -147,6 +158,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func lol_static_data(url: String) -> lolApiWrapper {
+        static_data = true;
         self.miniURL = "/v" + lol_static_dataAPIVersion + "/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
