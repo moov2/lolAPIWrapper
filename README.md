@@ -22,7 +22,7 @@ The following snippets will retrieve recent games of the required user
 ```swift
 // Initialise lolWrapper with api key
 // For API Key register at https://developer.riotgames.com/
-var lolApi = lolApiWrapper().ApiKey("f680a0a7-14db-4fdc-9f95-c5e66404e4f9");
+var lolApi = lolApiWrapper().ApiKey("00000000-0000-0000-0000-000000000000");
     
 // Call recent games of user id 585897
 lolApi.game("/by-summoner/585897/recent")
