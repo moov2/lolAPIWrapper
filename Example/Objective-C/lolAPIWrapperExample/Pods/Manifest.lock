@@ -1,0 +1,10 @@
+PODS:
+  - lolAPIWrapper (1.1.5)
+
+DEPENDENCIES:
+  - lolAPIWrapper
+
+SPEC CHECKSUMS:
+  lolAPIWrapper: 9f4260cdebe7ac30aaab373df7ceeffe704fbf34
+
+COCOAPODS: 0.39.0

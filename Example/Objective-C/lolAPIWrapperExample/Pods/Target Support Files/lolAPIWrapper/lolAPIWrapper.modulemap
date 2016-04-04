@@ -1,0 +1,6 @@
+framework module lolAPIWrapper {
+  umbrella header "lolAPIWrapper-umbrella.h"
+
+  export *
+  module * { export * }
+}
