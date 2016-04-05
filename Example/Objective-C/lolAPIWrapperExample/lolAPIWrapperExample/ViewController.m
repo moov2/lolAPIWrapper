@@ -18,7 +18,7 @@
     [super viewDidLoad];
     //"na" could be eu, or whatever.
     self.wrapper =[[lolApiWrapper alloc] init];
-    [self.wrapper ApiKey:@"6ec9a61a-f670-413e-b9f9-e67334fad68c" region:@"na"];
+    [self.wrapper ApiKey:@"YOUR API KEY HERE" region:@"na"];
     
     //Calling method to find the recent game data
     //Find your summoner ID online (We'll use mine)
