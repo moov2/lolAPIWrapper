@@ -103,6 +103,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func champion(url: String = "") -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + championAPIVersion + "/champion/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -115,6 +116,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func game(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + gameAPIVersion + "/game/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -132,6 +134,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func league(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + leagueAPIVersion + "/league/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -171,6 +174,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func match(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + matchAPIVersion + "/match/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -183,6 +187,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func matchlist(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + matchlistAPIVersion + "/matchlist/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -196,6 +201,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func stats(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + statsAPIVersion + "/stats/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -212,6 +218,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func summoner(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + summonerAPIVersion + "/summoner/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -225,6 +232,7 @@ public class lolApiWrapper: NSObject {
     
     */
     public func team(url: String) -> lolApiWrapper {
+        static_data = false;
         self.miniURL = "/v" + teamAPIVersion + "/team/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
