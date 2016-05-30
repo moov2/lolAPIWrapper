@@ -4,6 +4,8 @@
 //
 //  Created by Mobin Zadeh Kochak on 04/09/2015.
 //  Copyright (c) 2015 Mobin Zadeh Kochak. All rights reserved.
+//  Edited by Mason Phillips (https://github.com/mathmatrix828/
+//  Edited on 30MAY2016
 //
 
 import UIKit
@@ -24,53 +26,58 @@ let lol_static_dataAPIVersion = "1.2"
 public class lolApiWrapper: NSObject {
     
     // MARK: Initialised detail
-    var APIKey = ""
-    var region = ""
-    var miniURL = ""
-    var result = NSDictionary();
-    var static_data:Bool = false;
+    var APIKey: String!
+    var region: String?
+    var miniURL: String!
+    var result: NSDictionary!
+    var static_data: Bool = false
+    private var debugEnabled: Bool = false
     
-    public func ApiKey(APIKey: String, region: String = "") -> lolApiWrapper {
+    var delegate: LolAPIListener?
+    var sharedInstance: lolApiWrapper = lolApiWrapper()
+    
+    public func ApiKey(APIKey: String, region: String?) -> lolApiWrapper {
         self.APIKey = APIKey
         self.region = region
         
         return self
     }
     
+    public func APIWithDebug(APIKey k: String, region r: String?) -> lolApiWrapper {
+        debugEnabled = true
+        
+        return ApiKey(k, region: r)
+    }
     
     // MARK: Retrieve API
     public func get() -> NSDictionary {
-        var apiURL = "";
-        
-        if(self.region == "") {
-            for i in 0...(regions.count-1) {
-                if(!static_data) {
-                    apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
-                } else {
-                    apiURL = STATICURL.stringByReplacingOccurrencesOfString("{region}", withString: regions[i], options: NSStringCompareOptions.LiteralSearch, range: nil)
-                }
-                let URL = apiURL + self.miniURL + (self.miniURL.containsString("?") ? "&" : "?") + "api_key=" + self.APIKey
-                
-                self.result = self.getJSON(URL)
-                
-                if (self.result.count > 0) {
-                    break;
+        guard let r = region else {
+            for r in 0..<regions.count {
+                let finalURL = genURL(forRegion: regions[r])
+                result = getJSON(finalURL)
+                if result.count > 0 {
+                    break
                 }
             }
-        } else {
-            if(!static_data) {
-                apiURL = APIURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
-            } else {
-                apiURL = STATICURL.stringByReplacingOccurrencesOfString("{region}", withString: self.region, options: NSStringCompareOptions.LiteralSearch, range: nil)
-            }
-            let URL = apiURL + self.miniURL + (self.miniURL.containsString("?") ? "&" : "?") + "api_key=" + self.APIKey
-            self.result = self.getJSON(URL)
+            return result
         }
         
+        let finalURL = genURL(forRegion: r)
+        result = getJSON(finalURL)
         
-        print(self.result)
+        if debugEnabled { print(result) }
+        delegate?.didReturnResult(result)
         
-        return self.result
+        return result
+    }
+    
+    private func genURL(forRegion r: String) -> String {
+        let apiURL = ((static_data) ? APIURL : STATICURL).stringByReplacingOccurrencesOfString("{region}", withString: r, options: NSStringCompareOptions.LiteralSearch)
+        
+        let operand = ((miniURL.containsString("?")) ? "&" : "?")
+        let finalURL = "\(apiURL)\(miniURL)\(operand)api_key=\(APIKey)"
+        
+        return finalURL
     }
     
     public func getJSON(urlToRequest: String) -> NSDictionary{
@@ -84,10 +91,12 @@ public class lolApiWrapper: NSObject {
             do {
                 jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             } catch let error as NSError {
+                delegate?.errorDidOccur(error, userString: error.localizedFailureReason)
                 print(error)
             }
         } else {
             print("-------- URL IS INVALID --------\n")
+            delegate?.submittedURLInvalid(urlToRequest)
         }
         
         return jsonDictionary
@@ -251,4 +260,10 @@ public class lolApiWrapper: NSObject {
     - featured-games-v1.0
     - lol-status-v1.0
     */
+}
+
+protocol LolAPIListener {
+    func didReturnResult(result: NSDictionary)
+    func errorDidOccur(error: NSError, userString: String?)
+    func submittedURLInvalid(url: String)
 }
