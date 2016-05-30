@@ -28,6 +28,12 @@ var lolApi = lolApiWrapper().ApiKey("00000000-0000-0000-0000-000000000000");
 lolApi.game("/by-summoner/585897/recent")
        .get()
 ```
+or use the LolAPIWrapper protocol, implementing the following options
+```swift
+    func didReturnResult(result: NSDictionary)
+    func errorDidOccur(error: NSError, userString: String?)
+    func submittedURLInvalid(url: String)
+```
 
 ## Wrapper detail
  
