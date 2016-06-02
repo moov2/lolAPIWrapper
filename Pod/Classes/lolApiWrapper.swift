@@ -92,10 +92,10 @@ public class lolApiWrapper: NSObject {
                 jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             } catch let error as NSError {
                 delegate?.errorDidOccur(error, userString: error.localizedFailureReason)
-                print(error)
+                if debugEnabled { print(error); print(urlToRequest) }
             }
         } else {
-            print("-------- URL IS INVALID --------\n")
+            if debugEnabled { print("-------- URL IS INVALID --------") }
             delegate?.submittedURLInvalid(urlToRequest)
         }
         
