@@ -28,7 +28,8 @@ public class lolApiWrapper: NSObject {
     var region: String?
     var miniURL: String!
     var result: NSDictionary!
-    var static_data: Bool
+    private var static_data: Bool
+    private var is_version: Bool
     private var debugEnabled: Bool
     
     var delegate: LolAPIListener?
@@ -36,6 +37,7 @@ public class lolApiWrapper: NSObject {
     
     override init() {
         static_data = false
+        is_version = false;
         debugEnabled = false
         APIKey = ""
     }
@@ -81,7 +83,7 @@ public class lolApiWrapper: NSObject {
     }
     
     private func genURL(forRegion r: String) -> String {
-        let apiURL = ((static_data) ? APIURL : STATICURL).stringByReplacingOccurrencesOfString("{region}", withString: r, options: NSStringCompareOptions.LiteralSearch)
+        let apiURL = ((static_data) ? STATICURL : APIURL).stringByReplacingOccurrencesOfString("{region}", withString: r, options: NSStringCompareOptions.LiteralSearch)
         
         let operand = ((miniURL.containsString("?")) ? "&" : "?")
         let finalURL = "\(apiURL)\(miniURL)\(operand)api_key=\(APIKey)"
@@ -98,7 +100,15 @@ public class lolApiWrapper: NSObject {
             // Parse data
             
             do {
-                jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                if(is_version) {
+                    let jsonArray:NSArray = try (NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.MutableContainers) as? NSArray)!
+                    jsonDictionary = ["versions":jsonArray]
+                }
+                else {
+                    jsonDictionary = try (NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary)!
+                }
+                
+
             } catch let error as NSError {
                 delegate?.errorDidOccur(error, userString: error.localizedFailureReason)
                 print(error)
@@ -109,6 +119,29 @@ public class lolApiWrapper: NSObject {
         }
         
         return jsonDictionary
+    }
+    
+    public func getArrayJSON(urlToRequest: String) -> NSArray{
+        
+        var jsonArray = NSArray()
+        let urlToRequest = urlToRequest.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        if let jsonData = NSData(contentsOfURL: NSURL(string: urlToRequest)!) {
+            // Parse data
+            
+            do {
+                jsonArray = try (NSJSONSerialization.JSONObjectWithData(jsonData, options:NSJSONReadingOptions.MutableContainers) as? NSArray)!
+                
+            } catch let error as NSError {
+                delegate?.errorDidOccur(error, userString: error.localizedFailureReason)
+                print(error)
+            }
+        } else {
+            print("-------- URL IS INVALID --------\n")
+            delegate?.submittedURLInvalid(urlToRequest)
+        }
+        
+        return jsonArray
     }
     
     // MARK: --- API
@@ -122,6 +155,7 @@ public class lolApiWrapper: NSObject {
     */
     public func champion(url: String = "") -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + championAPIVersion + "/champion/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -135,6 +169,7 @@ public class lolApiWrapper: NSObject {
     */
     public func game(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + gameAPIVersion + "/game/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -153,6 +188,7 @@ public class lolApiWrapper: NSObject {
     */
     public func league(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + leagueAPIVersion + "/league/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -180,6 +216,9 @@ public class lolApiWrapper: NSObject {
     */
     public func lol_static_data(url: String) -> lolApiWrapper {
         static_data = true;
+        if(url == "/versions") {
+            is_version = true
+        }
         self.miniURL = "/v" + lol_static_dataAPIVersion + "/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -193,6 +232,7 @@ public class lolApiWrapper: NSObject {
     */
     public func match(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + matchAPIVersion + "/match/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -206,6 +246,7 @@ public class lolApiWrapper: NSObject {
     */
     public func matchlist(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + matchlistAPIVersion + "/matchlist/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -220,6 +261,7 @@ public class lolApiWrapper: NSObject {
     */
     public func stats(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + statsAPIVersion + "/stats/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -237,6 +279,7 @@ public class lolApiWrapper: NSObject {
     */
     public func summoner(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + summonerAPIVersion + "/summoner/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -251,6 +294,7 @@ public class lolApiWrapper: NSObject {
     */
     public func team(url: String) -> lolApiWrapper {
         static_data = false;
+        is_version = false;
         self.miniURL = "/v" + teamAPIVersion + "/team/" + (url.hasPrefix("/") ? (url as NSString).substringFromIndex(1) : url)
         return self
     }
@@ -269,6 +313,7 @@ public class lolApiWrapper: NSObject {
     - featured-games-v1.0
     - lol-status-v1.0
     */
+    
 }
 
 protocol LolAPIListener {
