@@ -32,7 +32,7 @@ public class lolApiWrapper: NSObject {
     private var debugEnabled: Bool
     
     var delegate: LolAPIListener?
-    var sharedInstance: lolApiWrapper = lolApiWrapper()
+    static let sharedInstance: lolApiWrapper = lolApiWrapper()
     
     override init() {
         static_data = false
