@@ -40,18 +40,18 @@ public class lolApiWrapper: NSObject {
         APIKey = ""
     }
     
-    convenience init(withKey k: String) {
+    public convenience init(withKey k: String) {
         self.init()
         APIKey = k
     }
     
-    convenience init(withKey k: String, andRegion r: String) {
+    public convenience init(withKey k: String, andRegion r: String) {
         self.init()
         APIKey = k
         region = r
     }
     
-    convenience init(withKey k: String, andRegion r: String, debugEnabled e: Bool) {
+    public convenience init(withKey k: String, andRegion r: String, debugEnabled e: Bool) {
         self.init()
         APIKey = k
         region = r
