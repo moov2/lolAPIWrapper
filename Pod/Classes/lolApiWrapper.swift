@@ -4,8 +4,6 @@
 //
 //  Created by Mobin Zadeh Kochak on 04/09/2015.
 //  Copyright (c) 2015 Mobin Zadeh Kochak. All rights reserved.
-//  Edited by Mason Phillips (https://github.com/mathmatrix828/
-//  Edited on 30MAY2016
 //
 
 import UIKit
@@ -26,27 +24,38 @@ let lol_static_dataAPIVersion = "1.2"
 public class lolApiWrapper: NSObject {
     
     // MARK: Initialised detail
-    var APIKey: String!
+    var APIKey: String
     var region: String?
     var miniURL: String!
     var result: NSDictionary!
-    var static_data: Bool = false
-    private var debugEnabled: Bool = false
+    var static_data: Bool
+    private var debugEnabled: Bool
     
     var delegate: LolAPIListener?
     var sharedInstance: lolApiWrapper = lolApiWrapper()
     
-    public func ApiKey(APIKey: String, region: String?) -> lolApiWrapper {
-        self.APIKey = APIKey
-        self.region = region
-        
-        return self
+    override init() {
+        static_data = false
+        debugEnabled = false
+        APIKey = ""
     }
     
-    public func APIWithDebug(APIKey k: String, region r: String?) -> lolApiWrapper {
-        debugEnabled = true
-        
-        return ApiKey(k, region: r)
+    convenience init(withKey k: String) {
+        self.init()
+        APIKey = k
+    }
+    
+    convenience init(withKey k: String, andRegion r: String) {
+        self.init()
+        APIKey = k
+        region = r
+    }
+    
+    convenience init(withKey k: String, andRegion r: String, debugEnabled e: Bool) {
+        self.init()
+        APIKey = k
+        region = r
+        debugEnabled = e
     }
     
     // MARK: Retrieve API
@@ -92,10 +101,10 @@ public class lolApiWrapper: NSObject {
                 jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             } catch let error as NSError {
                 delegate?.errorDidOccur(error, userString: error.localizedFailureReason)
-                if debugEnabled { print(error); print(urlToRequest) }
+                print(error)
             }
         } else {
-            if debugEnabled { print("-------- URL IS INVALID --------") }
+            print("-------- URL IS INVALID --------\n")
             delegate?.submittedURLInvalid(urlToRequest)
         }
         
