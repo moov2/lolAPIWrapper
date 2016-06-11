@@ -85,63 +85,63 @@ lolApi.league("/master")
 ### lol-static-data
 ```swift
 // Retrieves champion list
-lolApi.league()
+lolApi.lol_static_data()
       .get("/champion")
 
 // Retrieves a champion by its id
-lolApi.league("/champion/REQUIRED_ID")
+lolApi.lol_static_data("/champion/REQUIRED_ID")
       .get()
 
 // Retrieves item list
-lolApi.league("/item")
+lolApi.lol_static_data("/item")
       .get()
 
 // Retrieves item by its unique id
-lolApi.league("/item/REQUIRED_ID")
+lolApi.lol_static_data("/item/REQUIRED_ID")
       .get()
 
 // Retrieve language strings data
-lolApi.league("/language-strings")
+lolApi.lol_static_data("/language-strings")
       .get()
 
 // Retrieve supported languages data
-lolApi.league("/languages")
+lolApi.lol_static_data("/languages")
       .get()
 
 // Retrieve map data
-lolApi.league("/map")
+lolApi.lol_static_data("/map")
       .get()
 
 // Retrieves mastery list
-lolApi.league("/mastery")
+lolApi.lol_static_data("/mastery")
       .get()
 
 // Retrieves mastery item by its unique id
-lolApi.league("/mastery/REQUIRED_ID")
+lolApi.lol_static_data("/mastery/REQUIRED_ID")
       .get()
 
 // Retrieve realm data
-lolApi.league("/realm")
+lolApi.lol_static_data("/realm")
       .get()
 
 // Retrieves rune list
-lolApi.league("/rune")
+lolApi.lol_static_data("/rune")
       .get()
 
 // Retrieves rune by its unique id
-lolApi.league("/rune/REQUIRED_ID")
+lolApi.lol_static_data("/rune/REQUIRED_ID")
       .get()
 
 // Retrieves summoner spell list
-lolApi.league("/summoner-spell")
+lolApi.lol_static_data("/summoner-spell")
       .get()
 
 // Retrieves summoner spell by its unique id
-lolApi.league("/summoner-spell/REQUIRED_ID")
+lolApi.lol_static_data("/summoner-spell/REQUIRED_ID")
       .get()
 
 // Retrieve version data
-lolApi.league("/versions")
+lolApi.lol_static_data("/versions")
       .get()
 ```
 
@@ -200,7 +200,7 @@ lolApi.team("/by-summoner/REQUIRED_SUMMONER_ID")
       .get()
 
 // Get teams mapped by team ID for a given list of team IDs
-lolApi.summoner("/REQUIRED_TEAM_ID")
+lolApi.team("/REQUIRED_TEAM_ID")
       .get()
 
 ```
